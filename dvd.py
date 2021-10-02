@@ -5,9 +5,9 @@ from random import randint
 
 pygame.init()
 
-xEdge,yEdge = 800,800
+xEdge,yEdge = 1800, 800
 
-screen = pygame.display.set_mode((xEdge,yEdge))
+screen = pygame.display.set_mode((xEdge,yEdge), vsync = 1)
 logo = 'logo.png'
 
 myimage = pygame.image.load(logo)
@@ -16,9 +16,9 @@ imagerect = myimage.get_rect()
 #start pos
 x = 100
 y = 100
-speedX = randint(1,5)#first randomed then get new random values
-speedY = randint(1,5) 
-sizeX,sizeY =  200,200
+speedX = 5 #randint(1,5)#first randomed then get new random values
+speedY = 5 #randint(1,5) 
+sizeX,sizeY =  100, 100
 def logic():
     global x,y,startEdge,endEdge,sizeX,sizeY,speedX,speedY
     
@@ -39,11 +39,11 @@ def logic():
     if y < 0:
         speedY = randomValue
 
-    print("X: ",x,"Y: ",y,"SpeedX: ",speedX,"SpeedY: ",speedY)
+    print("X: ",x,"Y: ",y,"SpeedX: ",speedX,"SpeedY: ",speedY, 'xEdge: ', xEdge, 'yEdge: ', yEdge)
 
 #gameloop
 while True:
-    sleep(1/30)#30 fps
+    sleep(1/60)#30 fps
     screen.fill((0,0,0))
     logic()
     pygame.display.flip()
